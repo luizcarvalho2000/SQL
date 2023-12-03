@@ -1,0 +1,34 @@
+Cliente(
+    Nome,
+    CPF,
+    Endereço,
+    EMAIL,
+    Dt_Nasc,
+    Telefone,
+)
+Fornecedor_de_produtos(
+    Nome_fornecedor,
+    Cnpj,
+    Tipo_de_produtos,
+    Telefone,
+    Email,
+    Site,
+    Nome_representante,
+)
+Produtos_comprados(
+    Cod_produto,
+    Preco,
+    qtd_estoque,
+
+)
+Servicos_executados(
+    Preco,
+    Cod_produto,
+    Cliente,
+    Cod_funcionario
+)
+Funcionarios(
+    Nome,
+    Cod_funcionario,
+    Profissao,
+)

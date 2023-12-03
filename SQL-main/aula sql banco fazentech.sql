@@ -1,0 +1,59 @@
+CREATE DATABASE IF NOT EXISTS fazenda_bd
+DEFAULT CHARSET = utf8
+DEFAULT COLLATE = utf8_general_ci;
+use fazenda_bd;
+CREATE TABLE IF NOT EXISTS funcionarios(
+id INT AUTO_INCREMENT PRIMARY KEY,
+ nome VARCHAR(30) NOT NULL,
+ sobrenome VARCHAR(30) NOT NULL,
+ nascimento DATE,
+ CPF INT(11) NOT NULL,
+ email VARCHAR(50) NOT NULL,
+ telefone INT(12) NOT NULL,
+ endereco VARCHAR(50) NOT NULL,
+ funcao VARCHAR(30) NOT NULL,
+ salario INT(10) NOT NULL);
+ 
+ CREATE TABLE IF NOT EXISTS vaca(
+ id INT(3) AUTO_INCREMENT PRIMARY KEY,
+ especie VARCHAR(30) NOT NULL,
+ idade INT(3) NOT NULL,
+ peso INT(7) NOT NULL,
+ vacina VARCHAR(99) NOT NULL,
+ racao VARCHAR(50) NOT NULL,
+ teve_iseminacao ENUM('SIM','NÂO') NOT NULL,
+ prenha ENUM('SIM','NÃO') NOT NULL,
+ quantas_cria_teve INT(2) NOT NULL,
+ litro_de_leite_produzido INT(3) NOT NULL);
+ 
+ 
+ CREATE TABLE IF NOT EXISTS producaoleite(
+ vaca_Id INT(3) NOT NULL,
+FOREIGN KEY (vaca_id) REFERENCES vaca(id),
+ coleta DATE,
+ total_de_leite INT(10) NOT NULL);
+ 
+ 
+ CREATE TABLE IF NOT EXISTS produtos(
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ nome VARCHAR(30) NOT NULL,
+ tipo VARCHAR(30) NOT NULL,
+ qtd_em_estoque INT(10) NOT NULL,
+ preco DECIMAL(10,2) NOT NULL);
+ 
+ CREATE TABLE IF NOT EXISTS equipamentos(
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ nome VARCHAR(30) NOT NULL,
+ tipo VARCHAR(30) NOT NULL,
+ marca VARCHAR(30) NOT NULL,
+ voltagem ENUM('110V','220V','380V') NOT NULL);
+ 
+ CREATE TABLE IF NOT EXISTS varejistas(
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ CNPJ INT(14) NOT NULL,
+ nome VARCHAR(30) NOT NULL,
+ telefone INT(12) NOT NULL,
+ email VARCHAR(50) NOT NULL,
+ endereco VARCHAR(50) NOT NULL);
+ 
+ SHOW TABLES
